@@ -6,7 +6,7 @@ var app = express();
 app.set('port', (process.env.PORT || 1185));
 app.set('view engine', 'ejs');
 
-var dburl = 'postgres://njscholfield@localhost:5432/';
+//var dburl = 'postgres://njscholfield@localhost:5432/';
 
 app.get('/', function(req, res) {
   res.render('form');
