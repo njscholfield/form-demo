@@ -29,7 +29,7 @@ function processAllFieldsOfTheForm(req, res) {
     var form = new formidable.IncomingForm();
 
     form.parse(req, function (err, fields, files) {
-        pg.connect(process.env.DATABASE_URL || dburl, function(err, client, done) {
+        pg.connect(process.env.DATABASE_URL, function(err, client, done) {
           client.query('INSERT INTO input_data (id, name) VALUES($1, $2) RETURNING id', [fields['inputNumber'], fields['inputName']], function(err, result) {
             done();
             if (err) {
