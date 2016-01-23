@@ -1,0 +1,25 @@
+{
+  "name": "form-demo",
+  "version": "1.0.0",
+  "description": "Demo of recieving data thorough a form",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "form",
+    "database"
+  ],
+  "author": "Noah Scholfield",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.3.4",
+    "express": "^4.13.4",
+    "formidable": "^1.0.17",
+    "pg": "^4.4.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.heroku.com/still-stream-60315.git"
+  }
+}
