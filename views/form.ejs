@@ -12,7 +12,8 @@
     </div>
 
     <div class="container">
-      <form action="/" method="post" id="input-form" onsubmit="document.getElementById("input-form").reset();">
+      <iframe id="bs-iframe" class="hidden"></iframe>
+      <form action="/" target="bs-iframe" method="post" id="input-form" onsubmit="document.getElementById("input-form").reset();">
         <legend>Data Input</legend>
         <fieldset>
           <div class="form-group">
