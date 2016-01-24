@@ -6,15 +6,12 @@ var app = express();
 app.set('port', (process.env.PORT || 1185));
 app.set('view engine', 'ejs');
 
-//var dburl = 'postgres://njscholfield@localhost:5432/';
-
 app.get('/', function(req, res) {
   res.render('form');
 });
 
-app.post('/', function(req, res) {
-  processAllFieldsOfTheForm(req, res);
-  pg.connect(process.env.DATABASE_URL || dburl, function(err, client, done) {
+app.get('/results/', function(req, res) {
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('SELECT * FROM input_data', function(err, result) {
       done();
       if (err)
@@ -23,6 +20,10 @@ app.post('/', function(req, res) {
        { res.render('db', {results: result.rows} ); }
     });
   });
+});
+
+app.post('/', function(req, res) {
+  processAllFieldsOfTheForm(req, res);
 });
 
 function processAllFieldsOfTheForm(req, res) {
