@@ -4,11 +4,10 @@ var pg = require('pg');
 var app = express();
 
 app.set('port', process.env.PORT);
-app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.get('/', function(req, res) {
-  res.render('pages/form');
+  res.render('form');
 });
 
 app.get('/results/', function(req, res) {
@@ -47,7 +46,7 @@ function retrieveAllDatabaseTuples(req, res) {
       if (err)
        { console.error(err); res.send("Error " + err); }
       else
-       { res.render('pages/db', {results: result.rows} ); }
+       { res.render('db', {results: result.rows} ); }
     });
   });
 }
