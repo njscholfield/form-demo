@@ -17,7 +17,7 @@ app.get('/results/', function(req, res) {
 app.post('/', function(req, res) {
   processAllFieldsOfTheForm(req, res);
   setTimeout(function () {
-    retrieveAllDatabaseTuples(req, res);
+    res.redirect('/results/');
   }, 500);
 });
 
