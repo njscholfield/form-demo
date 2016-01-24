@@ -3,7 +3,7 @@ var formidable = require('formidable');
 var pg = require('pg');
 var app = express();
 
-app.set('port', (process.env.PORT || 1185));
+app.set('port', process.env.PORT);
 app.set('view engine', 'ejs');
 
 app.get('/', function(req, res) {
@@ -11,19 +11,12 @@ app.get('/', function(req, res) {
 });
 
 app.get('/results/', function(req, res) {
-  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    client.query('SELECT * FROM input_data', function(err, result) {
-      done();
-      if (err)
-       { console.error(err); res.send("Error " + err); }
-      else
-       { res.render('db', {results: result.rows} ); }
-    });
-  });
+  retrieveAllDatabaseTuples(req, res);
 });
 
 app.post('/', function(req, res) {
   processAllFieldsOfTheForm(req, res);
+  retrieveAllDatabaseTuples(req, res);
 });
 
 function processAllFieldsOfTheForm(req, res) {
@@ -42,6 +35,18 @@ function processAllFieldsOfTheForm(req, res) {
           });
         });
     });
+}
+
+function retrieveAllDatabaseTuples(req, res) {
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    client.query('SELECT * FROM input_data', function(err, result) {
+      done();
+      if (err)
+       { console.error(err); res.send("Error " + err); }
+      else
+       { res.render('db', {results: result.rows} ); }
+    });
+  });
 }
 
 app.listen(app.get('port'), function() {
