@@ -2,7 +2,7 @@
 
 ### Demo Form
 
-A demo form I made to try out [Heroku](https://heroku.com), [Node.js](https://nodejs.org) and databases, in this case PostgreSQL.
+A demo form I made to try out [Heroku](https://heroku.com), [Node.js](https://nodejs.org) and databases, in this case PostgreSQL. I used [Express](http://expressjs.com) to render the pages.
 
 #####This project currently consists of two pages:
 
